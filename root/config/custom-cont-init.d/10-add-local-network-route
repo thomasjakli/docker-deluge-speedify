@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv bash
+if [ ! -z "$LOCAL_NET_ADDRESS" ] && [ ! -z "$LOCAL_NET_MASK" ]; then
+    echo 'Adding route to local net'
+    gwinfo=$(route -n | grep 'UG[ \t]')
+    dev=$(echo $gwinfo | awk '{print $8}')
+    gw=$(echo $gwinfo | awk '{print $2}')
+    route add -net $LOCAL_NET_ADDRESS netmask $LOCAL_NET_MASK gw $gw dev $dev
+fi

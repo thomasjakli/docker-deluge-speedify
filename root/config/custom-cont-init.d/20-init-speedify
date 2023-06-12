@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bash
+echo 'Init and start Speedify'
+cd /usr/share/speedify
+./SpeedifyStartup.sh
+./speedify_cli login $SPEEDIFY_USER $SPEEDIFY_PASSWORD
+./speedify_cli connectmethod p2p
